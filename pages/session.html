@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Session Info</title>
+</head>
+<body>
+
+<h2>Session Info</h2>
+<p id="sessionData"></p>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const user = sessionStorage.getItem("user");
+
+  document.getElementById("sessionData").textContent =
+    user ? "Logged in as: " + user : "No active session";
+});
+</script>
+
+</body>
+</html>
