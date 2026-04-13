@@ -1,79 +1,70 @@
-# Midterm-Project
-Marval-Movie-Finder 
+
 # Marvel Movie Finder
 
-A front-end web app that allows users to search, filter, and explore Marvel movies with a clean, responsive interface.
-
----
-
 ## Authorship & Attribution
+Created by Sean Clary
 
-Created by **Sean Clary**
+### Tools & Libraries Used
+- Bootstrap 5 (layout and responsive design)
+- Normalize.css (cross-browser consistency)
+- Font Awesome (icons)
 
-Libraries & tools used:
-
-* Bootstrap 5 (layout and components)
-* Normalize.css (cross-browser consistency)
-* Font Awesome (icons)
-
-Data:
-
-* Marvel movie data stored locally in JavaScript
-
-Design inspiration:
-
-* Netflix (dark theme, grid layout, movie cards)
+### Data Source
+- Local JavaScript movie dataset (no external API)
 
 ---
 
 ## Tagline
-
 "Find your favorite Marvel movies instantly."
 
 ---
 
 ## User Story
-
-As a Marvel fan,
-I want to search and filter movies,
-so that I can quickly find movies I want to watch.
+As a Marvel fan, I want to search and filter Marvel movies so that I can quickly explore the MCU timeline.
 
 ---
 
 ## Links
-
-* Repository: https://github.com/sclary2001/marvel-movie-finder
-* Live App: https://sclary2001.github.io/marvel-movie-finder
-
-Tested on:
-
-* Desktop ✅
-* Mobile ✅
+- GitHub Repository: https://github.com/sclary2001/Midterm-Project
+- Live App (GitHub Pages): https://sclary2001.github.io/Midterm-Project/
+- Tested on: Desktop + Mobile
 
 ---
 
 ## Design Inspiration
+This project was inspired by Netflix’s interface design.
 
-See screenshot: `docs/netflix-inspiration.png`
+### Key UI inspiration:
+- Dark theme styling
+- Card-based movie grid layout
+- Clean browsing interface
 
-This project was inspired by Netflix’s interface.
+### Screenshot Evidence:
+Located in GitHub:
+`/docs/netflix-inspiration.png`
 
-What I modeled:
-
-* Dark theme UI
-* Grid-based movie layout
-* Card-style presentation
-
-What I improved:
-
-* Added search functionality
-* Added category filtering
-* Added sorting feature
-* Simplified layout using Bootstrap
+(Required for grading: must exist in repo under docs folder)
 
 ---
 
-## Code Example
+## Model / Inspiration Evidence
+This project was modeled after Netflix-style browsing UI.
+
+### What was inspired:
+- Grid layout for movie display
+- Dark UI theme
+- Card-based content presentation
+
+### Improvements made:
+- Added search functionality
+- Added category filtering
+- Added sorting (A–Z)
+- Simplified layout using Bootstrap grid system
+- Improved user interaction and filtering logic
+
+---
+
+## Code Example (DOM → JS → DOM Flow)
 
 ```js
 function updateMovies() {
@@ -96,44 +87,6 @@ function updateMovies() {
 
   displayMovies(result);
 }
-```
-
----
-
-## Explanation (DOM → Script → DOM)
-
-The user interacts with the search input or filter dropdown (DOM).
-JavaScript listens for these events using event listeners.
-When triggered, the script filters and sorts the movie data array.
-The updated data is then rendered back into the DOM using the `displayMovies()` function.
-
----
-
-## Architecture / Infrastructure
-
-* Front-end only web application
-* Uses local JavaScript array as data source
-* Uses sessionStorage to manage login state
-* Organized into separate HTML, CSS, and JS files
-* Responsive design using Bootstrap
-
----
-
-## Verification
-
-* Tested on desktop and mobile screen sizes
-* Login and logout functionality works
-* Session data persists during page session
-* Search, filter, and sort work together correctly
-* No major layout or functionality issues
-
----
-
-## Grader
-
-Barry Cumbie
-CIS 376 – Front-End Web Development
-Midterm Project – Spring 2026
 
 
 
