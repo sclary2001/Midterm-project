@@ -1,27 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Marvel Movie Finder</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-
-body{
-background:#111;
-color:white;
-}
-
-.card{
-margin:10px;
-}
-
-</style>
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
@@ -33,6 +21,7 @@ margin:10px;
 <span class="navbar-brand">Marvel Movie Finder</span>
 
 <div>
+<a href="pages/session.html" class="btn btn-light btn-sm">Session</a>
 <button id="logoutBtn" class="btn btn-danger btn-sm">Logout</button>
 </div>
 
@@ -45,10 +34,9 @@ margin:10px;
 
 <div class="row">
 
-<div class="col-md-4">
+<div class="col-md-4" id="loginSection">
 
 <input id="username" class="form-control mb-2" placeholder="Username">
-
 <input id="password" type="password" class="form-control mb-2" placeholder="Password">
 
 <button id="loginBtn" class="btn btn-primary w-100 mb-3">Login</button>
@@ -62,13 +50,11 @@ margin:10px;
 <input id="searchInput" class="form-control mb-2" placeholder="Search Marvel movies">
 
 <select id="filterSelect" class="form-select mb-2">
-
 <option value="all">All Movies</option>
 <option value="Avengers">Avengers</option>
 <option value="Spider-Man">Spider-Man</option>
 <option value="Guardians">Guardians</option>
 <option value="Other">Other</option>
-
 </select>
 
 <button id="sortBtn" class="btn btn-secondary mb-3">Sort A-Z</button>
@@ -81,156 +67,13 @@ margin:10px;
 
 </div>
 
-<script>
+<footer class="bg-dark text-center text-white p-3 mt-4">
+<p>Marvel Movie Finder © 2026</p>
+</footer>
 
-document.addEventListener("DOMContentLoaded",()=>{
+<script src="scripts/app.js"></script>
 
-console.log("App started")
-
-let movies=[
-
-{title:"Iron Man",category:"Avengers",year:2008},
-{title:"The Incredible Hulk",category:"Avengers",year:2008},
-{title:"Iron Man 2",category:"Avengers",year:2010},
-{title:"Thor",category:"Avengers",year:2011},
-{title:"Captain America: The First Avenger",category:"Avengers",year:2011},
-{title:"The Avengers",category:"Avengers",year:2012},
-{title:"Iron Man 3",category:"Avengers",year:2013},
-{title:"Thor: The Dark World",category:"Avengers",year:2013},
-{title:"Captain America: The Winter Soldier",category:"Avengers",year:2014},
-{title:"Guardians of the Galaxy",category:"Guardians",year:2014},
-{title:"Avengers: Age of Ultron",category:"Avengers",year:2015},
-{title:"Ant-Man",category:"Other",year:2015},
-{title:"Captain America: Civil War",category:"Avengers",year:2016},
-{title:"Doctor Strange",category:"Other",year:2016},
-{title:"Guardians of the Galaxy Vol. 2",category:"Guardians",year:2017},
-{title:"Spider-Man: Homecoming",category:"Spider-Man",year:2017},
-{title:"Thor: Ragnarok",category:"Avengers",year:2017},
-{title:"Black Panther",category:"Other",year:2018},
-{title:"Avengers: Infinity War",category:"Avengers",year:2018},
-{title:"Ant-Man and the Wasp",category:"Other",year:2018},
-{title:"Captain Marvel",category:"Other",year:2019},
-{title:"Avengers: Endgame",category:"Avengers",year:2019},
-{title:"Spider-Man: Far From Home",category:"Spider-Man",year:2019},
-{title:"Black Widow",category:"Other",year:2021},
-{title:"Shang-Chi",category:"Other",year:2021},
-{title:"Eternals",category:"Other",year:2021},
-{title:"Spider-Man: No Way Home",category:"Spider-Man",year:2021},
-{title:"Doctor Strange in the Multiverse of Madness",category:"Other",year:2022},
-{title:"Thor: Love and Thunder",category:"Avengers",year:2022},
-{title:"Black Panther: Wakanda Forever",category:"Other",year:2022},
-{title:"Ant-Man and the Wasp: Quantumania",category:"Other",year:2023},
-{title:"Guardians of the Galaxy Vol. 3",category:"Guardians",year:2023},
-{title:"The Marvels",category:"Other",year:2023}
-
-]
-
-const container=document.getElementById("movieContainer")
-
-function displayMovies(list){
-
-container.innerHTML=""
-
-list.forEach(movie=>{
-
-const div=document.createElement("div")
-div.className="col-md-4"
-
-div.innerHTML=`
-<div class="card bg-dark text-white p-3">
-<h5>${movie.title}</h5>
-<p>${movie.category}</p>
-<p>${movie.year}</p>
-</div>
-`
-
-container.appendChild(div)
-
-})
-
-}
-
-displayMovies(movies)
-
-document.getElementById("searchInput").addEventListener("input",e=>{
-
-const value=e.target.value.toLowerCase()
-
-console.log("Search:",value)
-
-const filtered=movies.filter(m=>
-m.title.toLowerCase().includes(value)
-)
-
-displayMovies(filtered)
-
-})
-
-document.getElementById("filterSelect").addEventListener("change",e=>{
-
-const category=e.target.value
-
-if(category==="all"){
-displayMovies(movies)
-return
-}
-
-const filtered=movies.filter(m=>m.category===category)
-
-displayMovies(filtered)
-
-})
-
-document.getElementById("sortBtn").addEventListener("click",()=>{
-
-const sorted=[...movies].sort((a,b)=>
-a.title.localeCompare(b.title)
-)
-
-displayMovies(sorted)
-
-})
-
-document.getElementById("loginBtn").addEventListener("click",()=>{
-
-const user=document.getElementById("username").value
-const pass=document.getElementById("password").value
-
-if(pass==="marvel123"){
-
-console.log("Login success")
-
-sessionStorage.setItem("user",user)
-
-document.getElementById("sessionInfo").textContent="Logged in user: "+user
-
-alert("Login successful")
-
-}else{
-
-console.log("Login failed")
-
-alert("Wrong password")
-
-}
-
-})
-
-document.getElementById("logoutBtn").addEventListener("click",()=>{
-
-sessionStorage.clear()
-
-document.getElementById("sessionInfo").textContent=""
-
-console.log("Session cleared")
-
-alert("Logged out")
-
-})
-
-})
-
-</script>
-
+</body>
+</html>
 </body>
 </html>
